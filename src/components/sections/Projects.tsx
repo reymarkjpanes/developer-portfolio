@@ -28,6 +28,7 @@ export function Projects() {
             key={index}
             variants={fadeUp}
             custom={index}
+            transition={{ delay: index * 0.15 }}
           >
             <ProjectCard project={project} />
           </motion.div>

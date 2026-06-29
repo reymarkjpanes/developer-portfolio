@@ -38,12 +38,13 @@ export function Contact() {
         <motion.a
           variants={fadeUp}
           whileHover={{
-            scale: 1.02,
-            transition: { duration: 0.2 },
+            scale: 1.03,
+            y: -2,
+            transition: { type: "spring", stiffness: 300, damping: 20 },
           }}
           whileTap={{ scale: 0.98 }}
           href={`mailto:${SITE_CONFIG.email}`}
-          className="mt-10 inline-flex items-center gap-2 rounded-xl border border-border bg-bg-surface/50 px-6 py-4 font-body text-base font-medium text-text-primary transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_30px_rgba(220,38,38,0.1)]"
+          className="mt-10 inline-flex items-center gap-2 rounded-xl border border-border bg-bg-surface/70 px-6 py-4 font-body text-base font-medium text-text-primary shadow-[0_4px_16px_var(--color-shadow-sm)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_8px_32px_var(--color-glow)]"
         >
           <HiOutlineMail size={20} className="text-accent" />
           {SITE_CONFIG.email}
@@ -51,19 +52,26 @@ export function Contact() {
 
         {/* Social Links */}
         <motion.div variants={fadeUp} className="mt-8 flex items-center gap-4">
-          {SOCIAL_LINKS.map((link) => {
+          {SOCIAL_LINKS.map((link, index) => {
             const Icon = iconMap[link.icon];
             return (
               <motion.a
                 key={link.name}
-                whileHover={{ y: -3, scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                whileHover={{
+                  y: -4,
+                  scale: 1.15,
+                  transition: { type: "spring", stiffness: 400, damping: 15 },
+                }}
+                whileTap={{ scale: 0.9 }}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${link.name} profile`}
-                className="flex size-11 items-center justify-center rounded-lg border border-border text-text-secondary transition-all duration-200 hover:border-accent/50 hover:text-accent"
+                className="flex size-11 items-center justify-center rounded-lg border border-border bg-bg-surface/50 text-text-secondary shadow-[0_2px_8px_var(--color-shadow-sm)] transition-all duration-200 hover:border-accent/50 hover:text-accent hover:shadow-[0_4px_16px_var(--color-glow)]"
               >
                 <Icon size={18} />
               </motion.a>

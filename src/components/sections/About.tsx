@@ -33,6 +33,7 @@ export function About() {
             <motion.p
               key={index}
               variants={slideInRight}
+              custom={index}
               className="font-body text-base leading-[1.8] text-text-secondary"
             >
               {paragraph}
@@ -40,6 +41,14 @@ export function About() {
           ))}
         </div>
       </div>
+
+      {/* Decorative divider */}
+      <motion.div
+        variants={fadeUp}
+        className="mt-16 flex justify-center"
+      >
+        <div className="h-px w-32 bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+      </motion.div>
     </Section>
   );
 }

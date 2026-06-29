@@ -11,6 +11,9 @@
   --color-accent: #DC2626;
   --color-accent-dark: #991B1B;
   --color-accent-hover: #EF4444;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-shadow-sm: rgba(0, 0, 0, 0.3);
+  --color-glow: rgba(220, 38, 38, 0.15);
 
   /* Fonts */
   --font-display: var(--font-space-grotesk), system-ui, sans-serif;
@@ -25,15 +28,18 @@
 
 /* Light mode overrides */
 [data-theme="light"] {
-  --color-bg-primary: #FAFAFA;
-  --color-bg-secondary: #F0F0F0;
+  --color-bg-primary: #FAFBFC;
+  --color-bg-secondary: #F1F3F5;
   --color-bg-surface: #FFFFFF;
-  --color-border: #E2E2E2;
-  --color-text-primary: #111111;
-  --color-text-secondary: #555555;
+  --color-border: #E0E4E8;
+  --color-text-primary: #0F1419;
+  --color-text-secondary: #536471;
   --color-accent: #DC2626;
   --color-accent-dark: #991B1B;
   --color-accent-hover: #B91C1C;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  --color-shadow-sm: rgba(0, 0, 0, 0.04);
+  --color-glow: rgba(220, 38, 38, 0.08);
 }
 
 * {
@@ -44,14 +50,12 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--color-bg-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-body);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -59,17 +63,40 @@ body {
   color: var(--color-text-primary);
 }
 
-/* Smooth transitions for theme change on common elements */
-[data-theme] *,
-[data-theme] *::before,
-[data-theme] *::after {
-  transition-property: background-color, border-color, color, box-shadow;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
+/* Smooth transitions for theme change */
+html,
+body,
+nav,
+footer,
+section,
+div,
+a,
+button,
+span,
+p,
+h1, h2, h3, h4, h5, h6,
+article {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              fill 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              stroke 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Prevent transition on animations/transforms that need to be instant */
-[data-theme] .no-theme-transition,
-[data-theme] .no-theme-transition * {
-  transition-property: none !important;
+/* Light mode specific card elevations */
+[data-theme="light"] .card-elevated {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04),
+              0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .card-elevated:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06),
+              0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode nav glass effect */
+[data-theme="light"] .nav-glass {
+  background-color: rgba(250, 251, 252, 0.85);
+  border-bottom-color: rgba(224, 228, 232, 0.8);
 }

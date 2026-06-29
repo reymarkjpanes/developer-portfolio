@@ -23,8 +23,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    setRotateX(((y - centerY) / centerY) * -2.5);
-    setRotateY(((x - centerX) / centerX) * 2.5);
+    setRotateX(((y - centerY) / centerY) * -3);
+    setRotateY(((x - centerX) / centerX) * 3);
   }
 
   function handleMouseLeave() {
@@ -37,13 +37,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       style={{
         transform: `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
         transition: "transform 0.15s ease-out",
       }}
-      className="group overflow-hidden rounded-xl border border-border bg-bg-surface/40 transition-all duration-300 hover:border-accent/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)]"
+      className="card-elevated group overflow-hidden rounded-xl border border-border bg-bg-surface/60 transition-all duration-300 hover:border-accent/20 hover:shadow-[0_16px_48px_var(--color-shadow)]"
     >
       {/* Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-bg-secondary">
@@ -54,7 +54,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       </div>
 
       {/* Content */}
@@ -71,7 +71,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-md border border-border/60 bg-bg-secondary/50 px-2.5 py-1 font-body text-xs font-medium text-text-secondary transition-colors duration-200 group-hover:border-border group-hover:text-text-primary"
+              className="rounded-md border border-border bg-bg-secondary/50 px-2.5 py-1 font-body text-xs font-medium text-text-secondary transition-colors duration-200 group-hover:border-accent/30 group-hover:text-text-primary"
             >
               {tech}
             </span>
@@ -82,8 +82,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="mt-2 flex items-center gap-4">
           {project.liveUrl && (
             <motion.a
-              whileHover={{ x: 2 }}
-              transition={{ duration: 0.2 }}
+              whileHover={{ x: 3 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -96,8 +97,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
           {project.githubUrl && (
             <motion.a
-              whileHover={{ x: 2 }}
-              transition={{ duration: 0.2 }}
+              whileHover={{ x: 3 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"

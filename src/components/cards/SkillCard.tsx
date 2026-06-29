@@ -15,15 +15,21 @@ export function SkillCard({ title, description, skills, icon }: SkillCardProps) 
   return (
     <motion.div
       variants={fadeUp}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
-      className="group flex flex-col gap-4 rounded-xl border border-border bg-bg-surface/30 p-6 transition-all duration-300 hover:border-accent/20 hover:bg-bg-surface/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+      whileHover={{
+        y: -6,
+        transition: { type: "spring", stiffness: 300, damping: 20 },
+      }}
+      className="card-elevated group flex flex-col gap-4 rounded-xl border border-border bg-bg-surface/50 p-6 transition-all duration-300 hover:border-accent/20 hover:bg-bg-surface/80 hover:shadow-[0_12px_40px_var(--color-shadow)]"
     >
       {/* Icon + Title */}
       <div className="flex items-start gap-3">
-        <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-bg-secondary/50 text-text-secondary transition-colors duration-300 group-hover:border-accent/30 group-hover:text-accent">
+        <motion.div
+          whileHover={{ rotate: 8, scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-bg-secondary/50 text-text-secondary transition-colors duration-300 group-hover:border-accent/30 group-hover:text-accent"
+        >
           {icon}
-        </div>
+        </motion.div>
         <div className="flex flex-col">
           <h3 className="font-display text-base font-bold tracking-tight text-text-primary">
             {title}

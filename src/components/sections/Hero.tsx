@@ -12,7 +12,7 @@ export function Hero() {
       className="relative flex min-h-screen items-center px-6"
     >
       {/* Subtle grid background */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] bg-[size:60px_60px] opacity-30 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_40%,transparent_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_40%,transparent_100%)]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 lg:flex-row lg:justify-between">
         {/* Left: Text Content */}
@@ -22,7 +22,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-bg-surface/50 px-4 py-1.5"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-bg-surface/70 px-4 py-1.5 shadow-[0_2px_8px_var(--color-shadow-sm)]"
           >
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
@@ -70,18 +70,22 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.65 }}
             className="mt-8 flex flex-col items-center gap-4 sm:flex-row"
           >
-            <a
+            <motion.a
               href="#projects"
-              className="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-body text-sm font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-body text-sm font-medium text-white shadow-[0_4px_16px_var(--color-glow)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_6px_24px_var(--color-glow)]"
             >
               View My Work
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#contact"
-              className="inline-flex items-center rounded-lg border border-border px-6 py-3 font-body text-sm font-medium text-text-secondary transition-all duration-200 hover:border-text-secondary hover:text-text-primary"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center rounded-lg border border-border px-6 py-3 font-body text-sm font-medium text-text-secondary shadow-[0_2px_8px_var(--color-shadow-sm)] transition-all duration-200 hover:border-text-secondary hover:text-text-primary"
             >
               Get In Touch
-            </a>
+            </motion.a>
           </motion.div>
         </div>
 
@@ -93,10 +97,18 @@ export function Hero() {
           className="relative shrink-0"
         >
           {/* Glow behind image */}
-          <div className="absolute -inset-4 rounded-full bg-accent/10 blur-3xl" />
+          <motion.div
+            animate={{ scale: [1, 1.05, 1], opacity: [0.6, 0.8, 0.6] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -inset-4 rounded-full bg-accent/10 blur-3xl"
+          />
 
-          {/* Profile image */}
-          <div className="relative size-64 overflow-hidden rounded-full border-2 border-border shadow-2xl sm:size-72 md:size-80 lg:size-96">
+          {/* Floating profile image */}
+          <motion.div
+            animate={{ y: [-4, 4, -4] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="relative size-64 overflow-hidden rounded-full border-2 border-border shadow-[0_20px_60px_var(--color-shadow)] sm:size-72 md:size-80 lg:size-96"
+          >
             <Image
               src="/images/profile.png"
               alt="Reymark Panes — Software & Web Developer"
@@ -105,10 +117,14 @@ export function Hero() {
               priority
               sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
             />
-          </div>
+          </motion.div>
 
-          {/* Decorative ring */}
-          <div className="absolute -inset-3 rounded-full border border-border/50" />
+          {/* Decorative ring with pulse */}
+          <motion.div
+            animate={{ scale: [1, 1.02, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -inset-3 rounded-full border border-border/50"
+          />
         </motion.div>
       </div>
 
