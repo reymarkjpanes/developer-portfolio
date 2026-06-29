@@ -43,7 +43,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         transform: `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
         transition: "transform 0.15s ease-out",
       }}
-      className="group overflow-hidden rounded-xl border border-border bg-bg-surface/40 transition-all duration-300 hover:border-accent/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
+      className="group overflow-hidden rounded-xl border border-border bg-bg-surface/40 transition-all duration-300 hover:border-accent/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)]"
     >
       {/* Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-bg-secondary">

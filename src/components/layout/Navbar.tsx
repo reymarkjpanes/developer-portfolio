@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { NAV_LINKS } from "@/lib/constants";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,22 +48,28 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <a
-          href="#contact"
-          className="hidden rounded-lg bg-accent px-4 py-2 font-body text-sm font-medium text-text-primary transition-colors duration-200 hover:bg-accent-hover md:inline-flex"
-        >
-          Let&apos;s Talk
-        </a>
+        {/* CTA + Theme Toggle */}
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="rounded-lg bg-accent px-4 py-2 font-body text-sm font-medium text-white transition-colors duration-200 hover:bg-accent-hover"
+          >
+            Let&apos;s Talk
+          </a>
+        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-text-primary md:hidden"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileOpen ? <HiX size={24} /> : <HiOutlineMenuAlt3 size={24} />}
-        </button>
+        {/* Mobile: Theme Toggle + Menu Toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-text-primary"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileOpen ? <HiX size={24} /> : <HiOutlineMenuAlt3 size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

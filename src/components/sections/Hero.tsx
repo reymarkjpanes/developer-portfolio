@@ -12,7 +12,7 @@ export function Hero() {
       className="relative flex min-h-screen items-center px-6"
     >
       {/* Subtle grid background */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(42,42,42,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(42,42,42,0.3)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_40%,transparent_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] bg-[size:60px_60px] opacity-30 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_40%,transparent_100%)]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 lg:flex-row lg:justify-between">
         {/* Left: Text Content */}
@@ -72,7 +72,7 @@ export function Hero() {
           >
             <a
               href="#projects"
-              className="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-body text-sm font-medium text-text-primary transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
+              className="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-body text-sm font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
             >
               View My Work
             </a>

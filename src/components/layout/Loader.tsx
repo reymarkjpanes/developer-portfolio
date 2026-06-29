@@ -71,7 +71,7 @@ export function Loader() {
                   cy="32"
                   r="28"
                   fill="none"
-                  stroke="#2A2A2A"
+                  className="stroke-border"
                   strokeWidth="1.5"
                 />
                 <motion.circle
@@ -79,7 +79,7 @@ export function Loader() {
                   cy="32"
                   r="28"
                   fill="none"
-                  stroke="#DC2626"
+                  className="stroke-accent"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeDasharray="176"
